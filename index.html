@@ -35,15 +35,14 @@ content="black-translucent"
 >
 
 <link
-rel="apple-touch-icon"
-sizes="180x180"
-href="icon-192.png"
+rel="icon"
+type="image/svg+xml"
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%2300ffff'/%3E%3Ctext x='50%25' y='57%25' font-size='160' font-family='Arial' font-weight='900' text-anchor='middle' fill='black'%3EDiVo%3C/text%3E%3C/svg%3E"
 >
 
 <link
-rel="icon"
-type="image/png"
-href="icon-192.png"
+rel="apple-touch-icon"
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%2300ffff'/%3E%3Ctext x='50%25' y='57%25' font-size='160' font-family='Arial' font-weight='900' text-anchor='middle' fill='black'%3EDiVo%3C/text%3E%3C/svg%3E"
 >
 
 <style>
@@ -318,6 +317,7 @@ select:focus{
     border:1px solid #c63b3b !important;
 }
 
+/* Збільшені та розширені кнопки дій */
 .actionButtons{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -334,11 +334,16 @@ select:focus{
     color:#00ffff;
 }
 
+/* Кнопки Надіслати (3) та Готово (4) робимо ширшими на всю картку і вищими */
 .actionButtons button:nth-child(3),
 .actionButtons button:nth-child(4){
+    grid-column: span 2;
     background:#00ffff;
     color:#111;
-    font-weight:700;
+    font-weight:800;
+    font-size:22px;
+    min-height:76px;
+    box-shadow: 0 0 15px rgba(0,255,255,.3);
 }
 
 h3{
@@ -367,6 +372,13 @@ h3{
 
     .row{
         grid-template-columns:1fr 80px 1fr;
+    }
+    
+    /* Зберігаємо зручний великий розмір для головних кнопок навіть на малих екранах */
+    .actionButtons button:nth-child(3),
+    .actionButtons button:nth-child(4){
+        font-size:20px;
+        min-height:70px;
     }
 
 }
