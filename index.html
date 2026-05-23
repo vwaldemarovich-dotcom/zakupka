@@ -34,10 +34,8 @@ name="apple-mobile-web-app-status-bar-style"
 content="black-translucent"
 >
 
-<link
-rel="apple-touch-icon"
-href="apple-touch-icon.png"
->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
 <link
 rel="icon"
@@ -546,7 +544,7 @@ onclick="saveEdit()">
 
 <script>
 
-// Очищення старого кешу для повної гарантії
+// Видаляємо старий кеш зображень
 if ('caches' in window) {
     caches.keys().then(function(names) {
         for (let name of names) {
@@ -555,13 +553,8 @@ if ('caches' in window) {
     });
 }
 
+// Стабільна реєстрація без самознищення воркера
 if('serviceWorker' in navigator){
-    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for(let registration of registrations) {
-            registration.unregister();
-        }
-    });
-
     window.addEventListener('load',()=>{
         navigator.serviceWorker.register('./sw.js').then(reg => {
             reg.update();
